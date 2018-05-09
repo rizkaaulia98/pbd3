@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 09, 2018 at 02:18 AM
+-- Generation Time: May 09, 2018 at 03:25 AM
 -- Server version: 10.1.21-MariaDB
--- PHP Version: 5.6.30
+-- PHP Version: 7.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -329,6 +329,11 @@ ALTER TABLE `terlapor`
 --
 
 --
+-- AUTO_INCREMENT for table `bap`
+--
+ALTER TABLE `bap`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `korban`
 --
 ALTER TABLE `korban`
@@ -363,69 +368,6 @@ ALTER TABLE `saksi`
 --
 ALTER TABLE `terlapor`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `bap`
---
-ALTER TABLE `bap`
-  ADD CONSTRAINT `bap_ibfk_1` FOREIGN KEY (`no_laporan`) REFERENCES `laporan` (`no_laporan`);
-
---
--- Constraints for table `detail_korban`
---
-ALTER TABLE `detail_korban`
-  ADD CONSTRAINT `detail_korban_ibfk_1` FOREIGN KEY (`korban_id`) REFERENCES `korban` (`id`),
-  ADD CONSTRAINT `detail_korban_ibfk_2` FOREIGN KEY (`no_laporan`) REFERENCES `laporan` (`no_laporan`);
-
---
--- Constraints for table `detail_pelapor`
---
-ALTER TABLE `detail_pelapor`
-  ADD CONSTRAINT `detail_pelapor_ibfk_1` FOREIGN KEY (`pelapor_id`) REFERENCES `pelapor` (`id`),
-  ADD CONSTRAINT `detail_pelapor_ibfk_2` FOREIGN KEY (`no_laporan`) REFERENCES `laporan` (`no_laporan`);
-
---
--- Constraints for table `detail_pemeriksaan`
---
-ALTER TABLE `detail_pemeriksaan`
-  ADD CONSTRAINT `detail_pemeriksaan_ibfk_1` FOREIGN KEY (`bap_id`) REFERENCES `bap` (`id`),
-  ADD CONSTRAINT `detail_pemeriksaan_ibfk_2` FOREIGN KEY (`nrp`) REFERENCES `personil` (`nrp`);
-
---
--- Constraints for table `detail_pertanyaan`
---
-ALTER TABLE `detail_pertanyaan`
-  ADD CONSTRAINT `detail_pertanyaan_ibfk_1` FOREIGN KEY (`bap_id`) REFERENCES `bap` (`id`);
-
---
--- Constraints for table `detail_saksi`
---
-ALTER TABLE `detail_saksi`
-  ADD CONSTRAINT `detail_saksi_ibfk_1` FOREIGN KEY (`saksi_id`) REFERENCES `saksi` (`id`),
-  ADD CONSTRAINT `detail_saksi_ibfk_2` FOREIGN KEY (`no_laporan`) REFERENCES `laporan` (`no_laporan`);
-
---
--- Constraints for table `detail_terlapor`
---
-ALTER TABLE `detail_terlapor`
-  ADD CONSTRAINT `detail_terlapor_ibfk_1` FOREIGN KEY (`terlapor_id`) REFERENCES `terlapor` (`id`),
-  ADD CONSTRAINT `detail_terlapor_ibfk_2` FOREIGN KEY (`no_laporan`) REFERENCES `laporan` (`no_laporan`);
-
---
--- Constraints for table `laporan`
---
-ALTER TABLE `laporan`
-  ADD CONSTRAINT `laporan_ibfk_1` FOREIGN KEY (`nrp`) REFERENCES `personil` (`nrp`);
-
---
--- Constraints for table `personil`
---
-ALTER TABLE `personil`
-  ADD CONSTRAINT `personil_ibfk_1` FOREIGN KEY (`pangkat_id`) REFERENCES `pangkat` (`id`);
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
